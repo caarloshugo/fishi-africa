@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>I Fish Africa Trial</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+    <style>
+      @font-face {
+          font-family: Raleway-Bold;
+          src: url(fonts/Raleway-Bold.ttf)format('opentype');
+      }
+      @font-face {
+          font-family: Raleway-Regular;
+          src: url(fonts/Raleway-Regular.ttf)format('opentype');
+      }
+
+      @font-face {
+          font-family: Raleway-Light;
+          src: url(fonts/Raleway-Light.ttf)format('opentype');
+      }
+      @font-face {
+          font-family: Raleway-SemiBold;
+          src: url(fonts/Raleway-SemiBold.ttf)format('opentype');
+      }
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+
+      .leaflet-container{
+        background:#fff;
+        font-family: Raleway-Light;
+        font:12px/20px;
+        color:#404040;
+        color:rgba(0,0,0,.75);
+        outline:0;
+        overflow:hidden;
+        -ms-touch-action:none;
+      }
+      .leaflet-container p {
+        font-size: 13px;
+        font-weight: 100;
+        line-height: 20px;
+        margin: 5px 0 10px;
+
+
+      }
+      .marker{
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        text-align: center;
+        margin-right: 7px;
+      }
+      .marker img{
+        width: 8px;
+        margin: 0px auto;
+      }
+      b{
+        font-weight: 800px;
+        font-size: 6px;
+      }
+      .leaflet-popup-content{
+        padding: 10px 10px 2px;
+      }
+      .infobox{
+        display: none;
+      }
+      /*.leaflet-popup-content-wrapper::before{
+        position: relative;
+        content: url('tachita.png');
+        float: right;
+        padding: 10px 13px 0px 0px;
+      }*/
+      .tachita{
+        position: relative;
+        float: right;
+        padding: 10px 13px 0px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+      <div class="infobox">
+        <div class="content-infobox">
+          <ul class="leyends">
+            <li>
+              <div class="marker">
+                <img src="markers/U3iKQLG.png" alt="">
+              </div>
+              <span>Fleet service transhipments and landinggs</span>
+            </li>
+            <li>
+              <div class="marker">
+                <img src="markers/8lWgE8R.png" alt="">
+              </div>
+              <span>Pre-fishing inspeccion</span>
+            </li>
+            <li>
+              <div class="marker">
+                <img src="markers/47IYgiu.png" alt="">
+              </div>
+              <span>EE of Fishing-i partner status</span>
+            </li>
+            <li>
+              <div class="marker">
+                <img src="markers/47IYgiu.png" alt="">
+              </div>
+              <span>Martime boundaries</span>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+
+
+      L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3Rpb25kZXNpZ25lcnMiLCJhIjoiSjhDTFBVMCJ9.Er0WXh3_kKN7mNqhKYg49g';
+      var northEast = L.latLng(33.206520,85.253906);  
+      var southWest = L.latLng(-34.996254,-17.138672);
+      bounds = L.latLngBounds(southWest, northEast);
+      
+      var map = L.mapbox.map('map', 'pererikbergh.jlo19opf',  {
+        maxBounds: bounds,
+        maxZoom: 10,
+        minZoom: 5,
+        zoomControl: false, tileLayer: { detectRetina: true}
+      }).setView([-16.243848, 44.456177], 5);
+
+      new L.Control.Zoom({ position: 'bottomleft' }).addTo(map);      
+
+      var myLayer = L.mapbox.featureLayer().addTo(map);      
+
+      var geoJson = [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [49.292994, -12.292836]
+        },
+        "properties": {
+            "title": "<b>Antsirianana</b> <p > Pre-fishing inspections</p> ",
+            "icon": {
+                "iconUrl": "8lWgE8R.png",
+                "iconSize": [70, 70], // size of the icon
+                "iconAnchor": [40, 32], // point of the icon which will correspond to marker's location
+                "popupAnchor": [-2, 0], // point from which the popup should open relative to the iconAnchor
+                "className": "dot"
+            }
+        }
+      }, {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [39.6694430792718, -4.04528562800003]
+      },
+      "properties": {
+        "title": "<b>Mombasa</b>  <p >Pre-fishing inspections</p>  ",
+        "icon": {
+          "iconUrl": "8lWgE8R.png",
+          "iconSize": [70, 70], // size of the icon
+          "iconAnchor": [40, 32], // point of the icon which will correspond to marker's location
+          "popupAnchor": [-2, 0], // point from which the popup should open relative to the iconAnchor
+          "className": "dot"
+        }
+      }
+    }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [57.5166631628812, -20.16663866276]
+    },
+    "properties": {
+        "title": "<b>Port Louis</b>  <p >Pre-fishing inspections</p>  ",
+        "icon": {
+            "iconUrl": "8lWgE8R.png",
+            "iconSize": [70, 70], // size of the icon
+            "iconAnchor": [40, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-2, 0], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+     }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [55.4506757987921, -4.61709724176873]
+    },
+    "properties": {
+        "title": "<b>Victoria</b>  <p >Pre-fishing inspections</p>",
+        "icon": {
+            "iconUrl": "http://i.imgur.com/8lWgE8R.png",
+            "iconSize": [70, 70], // size of the icon
+            "iconAnchor": [40, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-2, 0], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+      }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [39.2833674647179, -6.79975418737367]
+    },
+    "properties": {
+        "title": "<b>Dar es Salaam</b>  <p >Fleet service, trans-shipments and landings</p> ",
+        "icon": {
+            "iconUrl": "U3iKQLG.png",
+            "iconSize": [70, 70], // size of the icon
+            "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, 0], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+     }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [40.7361320075279, -14.4890209859558]
+    },
+    "properties": {
+        "title": "<b>Nacala</b>  <p >Fleet service, trans-shipments and landings</p> ",
+        "icon": {
+            "iconUrl": "U3iKQLG.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, 0], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+     }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [32.5837573332203, -25.9660965693849]
+    },
+    "properties": {
+        "title": "<b>Maputo</b>  <p >Fleet service, trans-shipments and landings</p>",
+        "icon": {
+            "iconUrl": "U3iKQLG.png",
+            "iconSize": [70, 70], // size of the icon
+            "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [0, 0], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+      }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [47.936813472257, -26.300177320975]
+    },
+    "properties": {
+        "title": " <b>Large-scale Illegal Fishing </b> <p >Large-scale illegal fishing in this region is known to include operators fishing without licence or using forged licences, transshipment of catch in international waters to evade detection and under-reporting of catch. Each country is responsible for the monitoring fishing activities in its territorial waters or EEZ, and traditionally they have not shared information. FISH-I Africa changes this. </p>",
+        "icon": {
+            "iconUrl": "47IYgiu.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-11, -8 ], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+      }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [57.1151866504568, -11.1041968254434]
+    },
+    "properties": {
+        "title": "  <b>Industrial Tuna Fishery </b> <p >Current FISH-I Africa members have combined territorial waters of approx. 5 million square kilometres: the size of the entire landmass of the European Union. The FISH-I countries have just 6 patrol vessels between them capable of accessing the distant tuna fleet. The cost of fuel and manpower means air patrols are not a viable alternative.</p>",
+        "icon": {
+            "iconUrl": "47IYgiu.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-11, -8 ], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+      }, {
+   "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [65.2188941743965, -14.6838305882646]
+    },
+    "properties": {
+        "title": "<b>The Enforcement Challenge </b> <p >The mostly foreign-flagged industrial tuna fleet operating in the Western Indian Ocean nets an average 700,000 tonnes of yellowfin, bigeye and skipjack annually– worth up to $US 2 billion based on current market prices. Much of this catch, destined for supermarkets around the world, is brought to the region’s biggest processing plant in the Seychelles..</p> ",
+        "icon": {
+            "iconUrl": "47IYgiu.png",
+            "iconSize": [50, 50], // size of the icon
+            "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
+            "popupAnchor": [-11, -8 ], // point from which the popup should open relative to the iconAnchor
+            "className": "dot"
+        }
+    }
+
+}];
+  
+    //Center
+    myLayer.on('click', function(e){
+      map.panTo(e.layer.getLatLng());
+    });
+
+
+    // Set a custom icon on each marker based on feature properties.
+    myLayer.on('layeradd', function(e) {
+      var marker = e.layer, feature = marker.feature;
+      marker.setIcon(L.icon(feature.properties.icon));      
+      
+    });
+    
+    // Add features to the map.
+    myLayer.setGeoJSON(geoJson);
+
+
+  </script>
+</body>
+</html>
