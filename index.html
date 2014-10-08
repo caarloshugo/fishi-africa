@@ -30,7 +30,7 @@
       .leaflet-container{
         background:#fff;
         font-family: Raleway-Light;
-        font:10px/20px;
+        font:12px/20px;
         color:#404040;
         color:rgba(0,0,0,.75);
         outline:0;
@@ -58,8 +58,11 @@
       }
       b{
         font-weight: 800px;
-        font-size: 6px;
+        font-size: 16px;
       }
+      .marker-title p {
+		font-size: 15px;  
+	  }
       .leaflet-popup-content{
         padding: 10px 10px 2px;
       }
@@ -313,9 +316,8 @@
 
     // Set a custom icon on each marker based on feature properties.
     myLayer.on('layeradd', function(e) {
-      var marker = e.layer, feature = marker.feature;
-      marker.setIcon(L.icon(feature.properties.icon));      
-      
+		var marker = e.layer, feature = marker.feature;
+		marker.setIcon(L.icon(feature.properties.icon));
     });
     
     // Add features to the map.
