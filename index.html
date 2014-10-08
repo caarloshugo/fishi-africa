@@ -119,15 +119,19 @@
 	if(L.Browser.mobile || L.Browser.touch) {
 		var iconSize  = 63;
 		var iconSize2 = 63;
-		var popupAnchor = -5;
-		var popupAnchor2 = -4;
+		
+		var popupAnchor    = -5;
+		var popupAnchor2   = -4;
 		var popupAnchor2_1 = -5;
+		var popupAnchor3   = -2;
 	} else {
 		var iconSize  = 70;
 		var iconSize2 = 50;
-		var popupAnchor = -2;
-		var popupAnchor2 = -11;
+		
+		var popupAnchor    = -2;
+		var popupAnchor2   = -11;
 		var popupAnchor2_1 = -8;
+		var popupAnchor3   = 0;
 	}
 	
       L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3Rpb25kZXNpZ25lcnMiLCJhIjoiSjhDTFBVMCJ9.Er0WXh3_kKN7mNqhKYg49g';
@@ -228,7 +232,7 @@
             "iconRetinaUrl": "U3iKQLG@2x.png",
             "iconSize": [iconSize, iconSize], // size of the icon
             "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
-            "popupAnchor": [0, 0], // point from which the popup should open relative to the iconAnchor
+            "popupAnchor": [popupAnchor3, 0], // point from which the popup should open relative to the iconAnchor
             "className": "dot"
         }
     }
@@ -246,7 +250,7 @@
             "iconRetinaUrl": "U3iKQLG@2x.png",
             "iconSize": [iconSize, iconSize], // size of the icon
             "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
-            "popupAnchor": [0, 0], // point from which the popup should open relative to the iconAnchor
+            "popupAnchor": [popupAnchor3, 0], // point from which the popup should open relative to the iconAnchor
             "className": "dot"
         }
     }
@@ -264,7 +268,7 @@
             "iconRetinaUrl": "U3iKQLG@2x.png",
             "iconSize": [iconSize, iconSize], // size of the icon
             "iconAnchor": [35, 32], // point of the icon which will correspond to marker's location
-            "popupAnchor": [0, 0], // point from which the popup should open relative to the iconAnchor
+            "popupAnchor": [popupAnchor3, 0], // point from which the popup should open relative to the iconAnchor
             "className": "dot"
         }
     }
