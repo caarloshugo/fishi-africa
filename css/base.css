@@ -1,0 +1,113 @@
+
+/*	BASE / RESET CSS by Sean Hawie
+
+
+
+KNOWN BUGS
+----------
+
+Gaps between inline-block elements can be removed by setting font-size: 0px; on its parent
+
+Safari doesn't apply padding to elements which have display: table. This rule standardises that behaviour:
+table (or any element with display: table) {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+http://stackoverflow.com/questions/6960083/safari-5-1-breaks-css-table-cell-spacing
+
+Firefox & Opera include scrollbar width in media queries width, while WebKit browsers don't
+http://stackoverflow.com/questions/8146874/issue-with-css-media-queriesscrollbar
+
+IE (and some other browsers) has issues placing elements on top of others using z-index alone.
+The topmost element must also have a transparent background image
+http://stackoverflow.com/questions/6480774/z-index-problem-in-ie-with-transparent-div
+
+IE6 doesn't support the CSS child selector ">"
+http://stackoverflow.com/questions/2402737/css-child-selector-doesnt-work-with-ie
+
+IE8 cannot scale background images
+http://stackoverflow.com/questions/12630221/ie8-fix-for-background-size-property-retina-image
+
+
+BROWSER HACKS
+-------------
+
+ALL			               .myClass { margin: 10px; }
+IE 6                       .myClass { _margin: 10px; }
+IE 6-7                     .myClass { *margin: 10px; }
+IE 6-9 (+?)                .myClass { margin: 10px\9; }
+IE 9-10					   @media screen and (min-width:0) { .myClass { margin-top: 10px; } }
+Firefox                    @-moz-document url-prefix() { .myClass { margin: 10px; } }
+WebKit (Safari + Chrome)   @media screen and (-webkit-min-device-pixel-ratio:0) { .myClass { margin-top: 10px; } }
+
+
+RESET CSS
+---------
+
+/*  main elemeents  */ span, p, a, img,
+/*  embed elements  */ iframe, object, embed, param, applet,
+/*  headings        */ h1, h2, h3, h4, h5, h6,
+/*  lists           */ ul, ol, li, dl, dt, dd,
+/*  tables          */ table, tbody, tfoot, thead, tr, td, th,
+/*  forms           */ form, input, label, select, option, textarea, fieldset,
+/*  formatting      */ big, small, strong, em, strike, b, u, i, center, sub, sup,
+/*  HTML5           */ header, footer, article, nav, aside, hgroup, section, caption, canvas, video, audio, figure, figcaption, details, menu, output, ruby, summary, time, mark,
+/*  other           */ pre, blockquote, abbr, address, cite, code, del, dfn, ins, kbd, q, s, samp, tt, var, legend {
+    margin: 0; padding: 0; border: 0; zoom: 1; border-style: none; background-repeat: no-repeat; outline: none; position: relative;
+    /* -webkit-backface-visibility: hidden; fixes iPad blink bug but introduces new bug where slid-down elements 
+    don't display properly if there is a position:fixed element somewhere on the page */
+}
+
+/*
+body:not(.page-template-page-map-php) body,
+body:not(.page-template-page-map-php) div,
+body:not(.page-template-page-map-php) span,
+body:not(.page-template-page-map-php) p,
+body:not(.page-template-page-map-php) a,
+body:not(.page-template-page-map-php) img,
+body:not(.page-template-page-map-php) iframe,
+body:not(.page-template-page-map-php) object,
+body:not(.page-template-page-map-php) embed,
+body:not(.page-template-page-map-php) h1,
+body:not(.page-template-page-map-php) h2,
+body:not(.page-template-page-map-php) h3,
+body:not(.page-template-page-map-php) ul,
+body:not(.page-template-page-map-php) ol,
+body:not(.page-template-page-map-php) li,
+body:not(.page-template-page-map-php) table,
+body:not(.page-template-page-map-php) tr,
+body:not(.page-template-page-map-php) td,
+body:not(.page-template-page-map-php) form,
+body:not(.page-template-page-map-php) input,
+body:not(.page-template-page-map-php) label,
+body:not(.page-template-page-map-php) select,
+body:not(.page-template-page-map-php) textarea,
+body:not(.page-template-page-map-php) section,
+body:not(.page-template-page-map-php) video
+{ position: relative; }
+*/
+
+/*
+body.page-template-page-map-php { position: static; }
+*/
+
+/* Firefox has issues with handling position: relative on table elements so we must declare separate rules for them
+ * http://stackoverflow.com/questions/7629326/position-relative-in-firefox */
+tbody, tfoot, thead, tr, td, th { position: static; vertical-align: top; }
+
+/* set HTML5 display for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+/* convenience rules */
+body { font-size: 62.5%; -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+table { border-collapse: collapse; border-spacing: 0; }
+ul li { list-style-type: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+input, textarea { box-sizing: border-box; }
+
+/* clearfix */
+.clearfix:after { content: " "; visibility: hidden; display: block; height: 0; clear: both; }
+
